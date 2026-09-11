@@ -1,7 +1,15 @@
 import Icon from '@/components/ui/icon';
-import { PHONE_HREF, TELEGRAM_HREF, WHATSAPP_HREF } from '@/lib/site';
+import { MAX_HREF, PHONE_HREF, TELEGRAM_HREF, WHATSAPP_HREF } from '@/lib/site';
 
-const BUTTONS = [
+type QuickButton = {
+  href: string;
+  label: string;
+  icon?: string;
+  text?: string;
+  className: string;
+};
+
+const BUTTONS: QuickButton[] = [
   {
     href: WHATSAPP_HREF,
     label: 'Написать в WhatsApp',
@@ -13,6 +21,12 @@ const BUTTONS = [
     label: 'Написать в Telegram',
     icon: 'Send',
     className: 'bg-[#2AABEE] text-[#052236]',
+  },
+  {
+    href: MAX_HREF,
+    label: 'Написать в MAX',
+    text: 'MAX',
+    className: 'bg-[#7B4DFF] text-white',
   },
   {
     href: PHONE_HREF,
@@ -35,7 +49,11 @@ const QuickContact = () => {
           title={b.label}
           className={`group flex h-14 w-14 items-center justify-center border-4 border-foreground shadow-[4px_4px_0_hsl(var(--foreground))] transition-transform duration-200 hover:-translate-y-1 ${b.className}`}
         >
-          <Icon name={b.icon} fallback="MessageCircle" size={24} />
+          {b.icon ? (
+            <Icon name={b.icon} fallback="MessageCircle" size={24} />
+          ) : (
+            <span className="font-display text-[13px] font-bold tracking-[0.02em]">{b.text}</span>
+          )}
         </a>
       ))}
     </div>
