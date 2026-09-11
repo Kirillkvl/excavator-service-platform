@@ -75,9 +75,11 @@ const Fleet = () => {
 
         <div className="grid gap-px bg-background/20 sm:grid-cols-2 lg:grid-cols-4">
           {list.map((m) => (
-            <article
+            <a
               key={m.name}
-              className="animate-fade-in group flex flex-col gap-3 bg-primary p-6 transition-colors duration-300 hover:bg-secondary hover:text-secondary-foreground"
+              href="#contacts"
+              aria-label={`Заказать: ${m.name}`}
+              className="animate-fade-in group flex cursor-pointer flex-col gap-3 bg-primary p-6 transition-colors duration-300 hover:bg-secondary hover:text-secondary-foreground"
             >
               <Icon
                 name={m.icon}
@@ -89,10 +91,14 @@ const Fleet = () => {
               <p className="text-xs leading-relaxed text-background/60 group-hover:text-secondary-foreground/80">
                 {m.spec}
               </p>
-              <div className="mt-auto pt-3 font-display text-sm text-secondary group-hover:text-secondary-foreground">
+              <div className="mt-auto flex items-center justify-between pt-3 font-display text-sm text-secondary group-hover:text-secondary-foreground">
                 {m.price}
+                <span className="flex items-center gap-1 text-[10px] uppercase tracking-[0.14em] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  Заказать
+                  <Icon name="ArrowRight" size={13} />
+                </span>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
