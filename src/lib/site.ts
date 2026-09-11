@@ -1,6 +1,9 @@
 export const PHONE = '+7 900 000-00-00';
 export const PHONE_HREF = 'tel:+79000000000';
 
+export const WHATSAPP_HREF = 'https://wa.me/79000000000';
+export const TELEGRAM_HREF = 'https://t.me/spectehnika';
+
 export const NAV_LINKS = [
   { label: 'Услуги', href: '#services' },
   { label: 'Техника', href: '#fleet' },

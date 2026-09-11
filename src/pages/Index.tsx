@@ -10,6 +10,7 @@ import Works from '@/components/Works';
 import Reviews from '@/components/Reviews';
 import Contacts from '@/components/Contacts';
 import Footer from '@/components/Footer';
+import QuickContact from '@/components/QuickContact';
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
       <Reviews />
       <Contacts />
       <Footer />
+      <QuickContact />
     </div>
   );
 };
