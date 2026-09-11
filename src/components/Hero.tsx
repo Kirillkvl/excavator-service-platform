@@ -10,7 +10,7 @@ const Hero = () => {
       {/* ——— постер ——— */}
       <section className="grain relative order-1 min-h-[340px] overflow-hidden bg-[var(--hero-surface)] md:order-none md:[grid-area:1/1/2/2]">
         <div className="absolute left-[34px] top-[30px] z-[3] text-[0.82em] font-medium uppercase tracking-[0.3em] text-foreground">
-          С 2011 года · Заказ от 1 часа
+          С 2011 года · Минимум 4 часа
         </div>
 
         <div className="hero-diag">
