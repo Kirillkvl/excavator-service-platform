@@ -1,6 +1,7 @@
 import json
 import os
 import smtplib
+import threading
 import urllib.parse
 import urllib.request
 from email.message import EmailMessage
@@ -21,7 +22,7 @@ def send_telegram(text: str) -> str:
     url = f'https://api.telegram.org/bot{token}/sendMessage'
     data = urllib.parse.urlencode({'chat_id': chat_id, 'text': text}).encode()
     try:
-        with urllib.request.urlopen(url, data=data, timeout=8) as resp:
+        with urllib.request.urlopen(url, data=data, timeout=3) as resp:
             resp.read()
         return 'ok'
     except Exception as exc:
@@ -43,10 +44,10 @@ def send_email(subject: str, text: str) -> str:
     msg.set_content(text)
     try:
         if port == 587:
-            server = smtplib.SMTP(host, port, timeout=10)
+            server = smtplib.SMTP(host, port, timeout=3)
             server.starttls()
         else:
-            server = smtplib.SMTP_SSL(host, port, timeout=10)
+            server = smtplib.SMTP_SSL(host, port, timeout=3)
         server.login(user, password)
         server.send_message(msg)
         server.quit()
@@ -89,12 +90,25 @@ def handler(event: dict, context) -> dict:
         f'Задача: {task}'
     )
 
-    tg = send_telegram(text)
-    mail = send_email('Новая заявка с сайта', text)
+    results = {}
+
+    def run(key, fn, *args):
+        results[key] = fn(*args)
+
+    threads = [
+        threading.Thread(target=run, args=('telegram', send_telegram, text)),
+        threading.Thread(target=run, args=('email', send_email, 'Новая заявка с сайта', text)),
+    ]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join(timeout=3.5)
+
+    print(f'lead delivery: {results}')
 
     return {
         'statusCode': 200,
         'headers': {**CORS, 'Content-Type': 'application/json'},
         'isBase64Encoded': False,
-        'body': json.dumps({'success': True, 'telegram': tg, 'email': mail}, ensure_ascii=False),
+        'body': json.dumps({'success': True, **results}, ensure_ascii=False),
     }
