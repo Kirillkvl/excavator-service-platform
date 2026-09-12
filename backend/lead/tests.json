@@ -1,0 +1,30 @@
+{
+  "tests": [
+    {
+      "name": "Валидная заявка принимается",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Кирилл",
+        "phone": "+7 923 532-07-42",
+        "task": "Нужен экскаватор на 1 смену"
+      },
+      "expectedStatus": 200,
+      "expectedBody": { "success": true },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Пустая заявка отклоняется",
+      "method": "POST",
+      "path": "/",
+      "body": { "name": "", "phone": "", "task": "" },
+      "expectedStatus": 400
+    },
+    {
+      "name": "CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}

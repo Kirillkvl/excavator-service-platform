@@ -5,18 +5,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { PHONE, PHONE_2, PHONE_2_HREF, PHONE_HREF } from "@/lib/site";
 
+const LEAD_URL = "https://functions.poehali.dev/4e2470b4-fb77-4578-a07b-c96a1fc3a215";
+
 const Contacts = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", phone: "", task: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const set = (key: string, value: string) => {
     setForm((f) => ({ ...f, [key]: value }));
     setErrors((e) => ({ ...e, [key]: "" }));
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const next: Record<string, string> = {};
     if (form.name.trim().length < 2) next.name = "Укажите имя";
@@ -26,13 +29,31 @@ const Contacts = () => {
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
-    setSent(true);
-    toast({
-      title: "Заявка принята",
-      description: "Перезвоним в течение 15 минут и назовём точную цену.",
-    });
-    setForm({ name: "", phone: "", task: "" });
-    setTimeout(() => setSent(false), 4000);
+    setLoading(true);
+    try {
+      const res = await fetch(LEAD_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("fail");
+
+      setSent(true);
+      toast({
+        title: "Заявка принята",
+        description: "Перезвоним в течение 15 минут и назовём точную цену.",
+      });
+      setForm({ name: "", phone: "", task: "" });
+      setTimeout(() => setSent(false), 4000);
+    } catch {
+      toast({
+        title: "Не удалось отправить",
+        description: `Позвоните нам напрямую: ${PHONE}`,
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -166,10 +187,19 @@ const Contacts = () => {
 
               <button
                 type="submit"
-                className="mt-6 flex w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-display text-sm uppercase tracking-[0.14em] text-primary-foreground transition-transform duration-200 hover:scale-[1.02]"
+                disabled={loading}
+                className="mt-6 flex w-full items-center justify-center gap-2 bg-primary px-6 py-4 font-display text-sm uppercase tracking-[0.14em] text-primary-foreground transition-transform duration-200 hover:scale-[1.02] disabled:opacity-60"
               >
-                <Icon name={sent ? "Check" : "Send"} size={18} />
-                {sent ? "Заявка отправлена" : "Отправить заявку"}
+                <Icon
+                  name={loading ? "Loader" : sent ? "Check" : "Send"}
+                  size={18}
+                  className={loading ? "animate-spin" : ""}
+                />
+                {loading
+                  ? "Отправляем..."
+                  : sent
+                    ? "Заявка отправлена"
+                    : "Отправить заявку"}
               </button>
 
               <p className="mt-3 text-[11px] leading-relaxed text-secondary-foreground/70">
