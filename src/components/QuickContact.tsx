@@ -1,5 +1,6 @@
 import Icon from '@/components/ui/icon';
-import { MAX_HREF, PHONE_HREF, TELEGRAM_HREF, WHATSAPP_HREF } from '@/lib/site';
+import PhoneMenu from '@/components/PhoneMenu';
+import { MAX_HREF, TELEGRAM_HREF, WHATSAPP_HREF } from '@/lib/site';
 
 type QuickButton = {
   href: string;
@@ -28,12 +29,6 @@ const BUTTONS: QuickButton[] = [
     text: 'MAX',
     className: 'bg-[#7B4DFF] text-white',
   },
-  {
-    href: PHONE_HREF,
-    label: 'Позвонить',
-    icon: 'Phone',
-    className: 'bg-secondary text-secondary-foreground',
-  },
 ];
 
 const QuickContact = () => {
@@ -56,6 +51,13 @@ const QuickContact = () => {
           )}
         </a>
       ))}
+      <PhoneMenu
+        side="left"
+        align="end"
+        className="group flex h-14 w-14 items-center justify-center border-4 border-foreground bg-secondary text-secondary-foreground shadow-[4px_4px_0_hsl(var(--foreground))] transition-transform duration-200 hover:-translate-y-1"
+      >
+        <Icon name="Phone" size={24} />
+      </PhoneMenu>
     </div>
   );
 };

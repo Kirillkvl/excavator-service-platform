@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { PHONE, PHONE_HREF } from "@/lib/site";
+import { PHONE, PHONE_2, PHONE_2_HREF, PHONE_HREF } from "@/lib/site";
 
 const ZONES = [
   { name: "Город", note: "Подача бесплатно" },
@@ -66,6 +66,13 @@ const Contacts = () => {
               >
                 <Icon name="Phone" size={32} />
                 {PHONE}
+              </a>
+              <a
+                href={PHONE_2_HREF}
+                className="mt-3 flex items-center gap-3 font-display text-2xl text-secondary transition-opacity hover:opacity-80 md:text-4xl"
+              >
+                <Icon name="Phone" size={26} />
+                {PHONE_2}
               </a>
               <p className="mt-3 text-sm text-background/70">
                 Ежедневно 7:00–22:00. Отвечаем в WhatsApp и Telegram на том же

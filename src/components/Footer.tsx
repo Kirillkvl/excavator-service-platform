@@ -1,4 +1,4 @@
-import { NAV_LINKS, PHONE, PHONE_HREF } from '@/lib/site';
+import { NAV_LINKS, PHONE, PHONE_2, PHONE_2_HREF, PHONE_HREF } from '@/lib/site';
 
 const LOGO =
   'https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/bucket/6e8350ff-dc3e-4180-99bc-13834aeec731.jpg';
@@ -29,12 +29,20 @@ const Footer = () => {
           ))}
         </nav>
 
-        <a
-          href={PHONE_HREF}
-          className="bg-primary px-6 py-3 text-center font-display text-sm uppercase tracking-[0.12em] text-primary-foreground transition-transform duration-200 hover:scale-[1.03]"
-        >
-          {PHONE}
-        </a>
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <a
+            href={PHONE_HREF}
+            className="bg-primary px-6 py-3 text-center font-display text-sm uppercase tracking-[0.12em] text-primary-foreground transition-transform duration-200 hover:scale-[1.03]"
+          >
+            {PHONE}
+          </a>
+          <a
+            href={PHONE_2_HREF}
+            className="border-2 border-foreground px-6 py-[10px] text-center font-display text-sm uppercase tracking-[0.12em] text-foreground transition-colors duration-200 hover:bg-secondary"
+          >
+            {PHONE_2}
+          </a>
+        </div>
       </div>
       <div className="container mt-8 border-t border-border pt-5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
         © {new Date().getFullYear()} Спец техника · Аренда спецтехники · Не является публичной

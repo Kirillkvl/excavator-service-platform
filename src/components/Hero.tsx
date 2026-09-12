@@ -1,4 +1,5 @@
-import { IMG, PHONE, PHONE_HREF } from '@/lib/site';
+import PhoneMenu from '@/components/PhoneMenu';
+import { IMG, PHONE, PHONE_2, PHONE_2_HREF, PHONE_HREF } from '@/lib/site';
 
 const Hero = () => {
   return (
@@ -37,14 +38,20 @@ const Hero = () => {
 
       {/* ——— кнопка ——— */}
       <section className="grain hero-fade relative order-3 flex flex-wrap items-end gap-[18px] overflow-hidden bg-[var(--hero-surface)] px-[34px] pb-[30px] pt-6 md:order-none md:pt-0 md:[grid-area:2/1/3/2]">
-        <a
-          href={PHONE_HREF}
+        <PhoneMenu
+          align="start"
+          side="top"
           className="relative z-[2] bg-primary px-[30px] py-[15px] font-display text-[1.05em] uppercase tracking-[0.1em] text-primary-foreground transition-transform duration-200 hover:scale-[1.03]"
         >
           Позвонить
-        </a>
+        </PhoneMenu>
         <div className="relative z-[2] pb-1 text-[0.8em] uppercase leading-[1.4] tracking-[0.16em] text-foreground">
-          <b className="block font-semibold">{PHONE}</b>
+          <a href={PHONE_HREF} className="block font-semibold hover:opacity-70">
+            {PHONE}
+          </a>
+          <a href={PHONE_2_HREF} className="block font-semibold hover:opacity-70">
+            {PHONE_2}
+          </a>
           <span className="text-muted-foreground">Выезд по городу и области</span>
         </div>
       </section>

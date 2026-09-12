@@ -1,5 +1,17 @@
-export const PHONE = "+7 900 000-00-00";
-export const PHONE_HREF = "tel:+89235320742";
+export const PHONES = [
+  { label: "+7 923 532-07-42", href: "tel:+79235320742", name: "Кирилл" },
+  { label: "+7 913 703-13-33", href: "tel:+79137031333", name: "Александр" },
+  {
+    label: "8 (383) 310-33-63",
+    href: "tel:+73833103363",
+    name: "Александр · городской",
+  },
+];
+
+export const PHONE = PHONES[0].label;
+export const PHONE_HREF = PHONES[0].href;
+export const PHONE_2 = PHONES[1].label;
+export const PHONE_2_HREF = PHONES[1].href;
 
 export const WHATSAPP_HREF = "https://wa.me/79000000000";
 export const TELEGRAM_HREF = "https://t.me/spectehnika";

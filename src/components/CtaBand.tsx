@@ -1,5 +1,6 @@
 import Icon from '@/components/ui/icon';
-import { PHONE, PHONE_HREF } from '@/lib/site';
+import PhoneMenu from '@/components/PhoneMenu';
+import { PHONE, PHONE_2, PHONE_2_HREF } from '@/lib/site';
 
 const STATS = [
   { v: '14 лет', t: 'на объектах' },
@@ -24,13 +25,22 @@ const CtaBand = () => {
         </div>
 
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <a
-            href={PHONE_HREF}
-            className="flex items-center gap-2 bg-primary px-7 py-4 font-display text-sm uppercase tracking-[0.12em] text-primary-foreground transition-transform duration-200 hover:scale-[1.03]"
-          >
-            <Icon name="Phone" size={18} />
-            {PHONE}
-          </a>
+          <div className="flex flex-col gap-2">
+            <PhoneMenu
+              align="start"
+              className="flex items-center gap-2 bg-primary px-7 py-4 font-display text-sm uppercase tracking-[0.12em] text-primary-foreground transition-transform duration-200 hover:scale-[1.03]"
+            >
+              <Icon name="Phone" size={18} />
+              {PHONE}
+              <Icon name="ChevronDown" size={16} />
+            </PhoneMenu>
+            <a
+              href={PHONE_2_HREF}
+              className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground hover:text-foreground"
+            >
+              или {PHONE_2}
+            </a>
+          </div>
           <a
             href="#contacts"
             className="border-2 border-foreground px-7 py-[14px] font-display text-sm uppercase tracking-[0.12em] text-foreground transition-colors duration-200 hover:bg-secondary"

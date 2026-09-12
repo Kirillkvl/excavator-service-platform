@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
-import { NAV_LINKS, PHONE, PHONE_HREF } from '@/lib/site';
+import PhoneMenu from '@/components/PhoneMenu';
+import { NAV_LINKS, PHONE, PHONE_2, PHONE_2_HREF, PHONE_HREF } from '@/lib/site';
 
 const LOGO =
   'https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/bucket/6e8350ff-dc3e-4180-99bc-13834aeec731.jpg';
@@ -26,12 +27,10 @@ const Header = () => {
           </span>
         </a>
 
-        <a
-          href={PHONE_HREF}
-          className="absolute right-[22px] top-1/2 hidden -translate-y-1/2 text-[0.82em] font-medium uppercase tracking-[0.16em] text-primary-foreground transition-opacity hover:opacity-70 sm:block"
-        >
+        <PhoneMenu className="absolute right-[22px] top-1/2 hidden -translate-y-1/2 items-center gap-2 text-[0.82em] font-medium uppercase tracking-[0.16em] text-primary-foreground transition-opacity hover:opacity-70 sm:flex">
           {PHONE}
-        </a>
+          <Icon name="ChevronDown" size={14} />
+        </PhoneMenu>
 
         <button
           type="button"
@@ -76,6 +75,13 @@ const Header = () => {
               className="bg-primary px-6 py-4 font-display uppercase tracking-[0.1em] text-primary-foreground"
             >
               {PHONE}
+            </a>
+            <a
+              href={PHONE_2_HREF}
+              onClick={() => setOpen(false)}
+              className="border-t border-background/20 bg-primary px-6 py-4 font-display uppercase tracking-[0.1em] text-primary-foreground"
+            >
+              {PHONE_2}
             </a>
           </div>
         </div>
