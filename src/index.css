@@ -11,7 +11,7 @@
     --hero-muted: #6e6046;
     --hero-accent: #17120e;
     --hero-accent-contrast: #ffc20e;
-    --hero-size-head: 72px;
+    --hero-size-head: clamp(26px, 2.9vw, 44px);
     --hero-radius: 0px;
     --hero-x-frame: #f3eedc;
     --hero-x-stripe: #17120e;
@@ -153,7 +153,9 @@
     color: var(--hero-accent-contrast);
     text-transform: lowercase;
     transform: skewX(-9deg);
-    padding-left: 13%;
+    padding-left: 15%;
+    padding-right: 10%;
+    white-space: nowrap;
   }
 
   .hero-h1 .l2 {
@@ -259,8 +261,9 @@
   }
 
   .hero-h1 {
-    padding-left: 17%;
-    font-size: 30px;
+    padding-left: 16%;
+    padding-right: 12%;
+    font-size: clamp(20px, 6.2vw, 28px);
   }
 
   .hero-columns {

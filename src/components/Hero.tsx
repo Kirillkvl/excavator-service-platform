@@ -14,7 +14,7 @@ const Hero = () => {
         </div>
 
         <div className="hero-diag">
-          <h1 className="hero-h1 text-[38px] sm:text-[52px] md:text-[length:var(--hero-size-head)]">
+          <h1 className="hero-h1">
             любая спецтехника<span className="l2">на заказ</span>
           </h1>
         </div>
