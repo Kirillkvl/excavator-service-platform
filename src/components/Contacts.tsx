@@ -80,7 +80,7 @@ const Contacts = () => {
                   t: "База техники",
                   v: "Новосибирск,Ул Театральная 1а",
                 },
-                { icon: "Mail", t: "Почта", v: "zakaz@spectehnika.ru" },
+                { icon: "Mail", t: "Почта", v: "Kirillhag2006@mail.ru" },
                 {
                   icon: "Clock",
                   t: "Подача",
