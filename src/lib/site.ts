@@ -15,7 +15,7 @@ export const NAV_LINKS = [
 ];
 
 export const IMG = {
-  hero: "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/bucket/8d2dbb29-fa48-40ea-b2c6-3dc4c3a08f29.jpg",
+  hero: "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/bucket/02ad4ad3-7541-4603-8655-e37621ff036c.jpg",
   trench:
     "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/bucket/e5dfea13-d5e3-4094-b9a6-2ecd39bbde3d.jpg",
   dump: "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/files/b594fb6e-f166-42a9-b1bb-916f9dd96fce.jpg",
