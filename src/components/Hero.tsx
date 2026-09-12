@@ -8,8 +8,8 @@ const Hero = () => {
       style={{ gridTemplateAreas: undefined }}
     >
       {/* ——— постер ——— */}
-      <section className="grain relative order-1 min-h-[340px] overflow-hidden bg-[var(--hero-surface)] md:order-none md:[grid-area:1/1/2/2]">
-        <div className="absolute left-[34px] top-[30px] z-[3] text-[0.82em] font-medium uppercase tracking-[0.3em] text-foreground">
+      <section className="grain relative order-1 min-h-[420px] overflow-hidden bg-[var(--hero-surface)] md:order-none md:min-h-[340px] md:[grid-area:1/1/2/2]">
+        <div className="hero-eyebrow absolute left-[34px] top-[30px] z-[3] text-[0.82em] font-medium uppercase tracking-[0.3em] text-foreground">
           С 2011 года · Минимум 4 часа
         </div>
 
@@ -19,7 +19,7 @@ const Hero = () => {
           </h1>
         </div>
 
-        <p className="absolute bottom-[96px] left-[34px] z-[3] max-w-[74%] text-[0.95em] font-normal leading-[1.45] text-foreground">
+        <p className="hero-lead absolute bottom-[96px] left-[34px] z-[3] max-w-[74%] text-[0.95em] font-normal leading-[1.45] text-foreground">
           Траншеи, планировка участка, вывоз грунта. Экскаваторы-погрузчики, самосвалы,
           бульдозеры, ямобуры, манипуляторы — подберём машину под работу.
         </p>

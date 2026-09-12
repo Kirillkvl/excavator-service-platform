@@ -252,6 +252,37 @@
   }
 }
 
+@media (max-width: 767px) {
+  .hero-diag {
+    top: 24%;
+    padding: 18px 0 22px;
+  }
+
+  .hero-h1 {
+    padding-left: 17%;
+    font-size: 30px;
+  }
+
+  .hero-columns {
+    top: 76% !important;
+    width: 40px !important;
+    right: 16px !important;
+  }
+
+  .hero-eyebrow {
+    left: 22px;
+    top: 22px;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-lead {
+    left: 22px;
+    right: 22px;
+    bottom: 74px;
+    max-width: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
