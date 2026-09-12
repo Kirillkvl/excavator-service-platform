@@ -20,7 +20,7 @@ export const IMG = {
     "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/files/ec3da286-c0e0-485e-b09a-29f7e6d37b24.jpg",
   dump: "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/files/b594fb6e-f166-42a9-b1bb-916f9dd96fce.jpg",
   crane:
-    "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/files/956114ee-1228-447d-b24a-1636e60f0440.jpg",
+    "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/bucket/ede3ad5f-0869-4437-af18-0a5c98041fe3.webp",
   winter:
     "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/bucket/22da92dc-610f-4daf-b3f6-df498f79e412.jpg",
   demolition:
