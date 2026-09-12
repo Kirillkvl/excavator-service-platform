@@ -1,6 +1,8 @@
+import http.client
 import json
 import os
 import smtplib
+import ssl
 import threading
 import urllib.parse
 import urllib.request
@@ -19,14 +21,30 @@ def send_telegram(text: str) -> str:
     chat_id = os.environ.get('TELEGRAM_CHAT_ID')
     if not token or not chat_id:
         return 'skipped'
-    url = f'https://api.telegram.org/bot{token}/sendMessage'
     data = urllib.parse.urlencode({'chat_id': chat_id, 'text': text}).encode()
-    try:
-        with urllib.request.urlopen(url, data=data, timeout=3) as resp:
-            resp.read()
-        return 'ok'
-    except Exception as exc:
-        return f'error: {exc}'
+    path = f'/bot{token}/sendMessage'
+    headers = {
+        'Host': 'api.telegram.org',
+        'Content-Type': 'application/x-www-form-urlencoded',
+    }
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+
+    last = 'no attempt'
+    for host in ('api.telegram.org', '149.154.167.220'):
+        try:
+            conn = http.client.HTTPSConnection(host, 443, timeout=1.8, context=ctx)
+            conn.request('POST', path, body=data, headers=headers)
+            resp = conn.getresponse()
+            body = resp.read()
+            conn.close()
+            if resp.status == 200:
+                return 'ok'
+            last = f'error {host}: {resp.status} {body[:200]!r}'
+        except Exception as exc:
+            last = f'error {host}: {exc}'
+    return last
 
 
 def send_email(subject: str, text: str) -> str:
@@ -62,6 +80,24 @@ def handler(event: dict, context) -> dict:
 
     if method == 'OPTIONS':
         return {'statusCode': 200, 'headers': CORS, 'body': ''}
+
+    if method == 'GET' and (event.get('queryStringParameters') or {}).get('diag') == '1':
+        out = {}
+        for name, url in (
+            ('cors_eu', 'https://cors.eu.org/https://api.telegram.org/'),
+            ('whateverorigin', 'https://www.whateverorigin.org/get?url=https://api.telegram.org/'),
+            ('tgproxy', 'https://tg-proxy.deno.dev/'),
+        ):
+            try:
+                with urllib.request.urlopen(url, timeout=4) as r:
+                    out[name] = r.status
+            except Exception as exc:
+                out[name] = f'err: {exc}'
+        return {
+            'statusCode': 200,
+            'headers': {**CORS, 'Content-Type': 'application/json'},
+            'body': json.dumps(out, ensure_ascii=False),
+        }
 
     if method != 'POST':
         return {
@@ -102,7 +138,7 @@ def handler(event: dict, context) -> dict:
     for t in threads:
         t.start()
     for t in threads:
-        t.join(timeout=3.5)
+        t.join(timeout=4.2)
 
     print(f'lead delivery: {results}')
 
