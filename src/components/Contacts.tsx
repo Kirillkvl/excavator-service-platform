@@ -5,14 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { PHONE, PHONE_2, PHONE_2_HREF, PHONE_HREF } from "@/lib/site";
 
-const ZONES = [
-  { name: "Город", note: "Подача бесплатно" },
-  { name: "До 20 км от города", note: "Подача бесплатно" },
-  { name: "20–60 км", note: "45 ₽ за км" },
-  { name: "60–150 км", note: "По договорённости" },
-  { name: "Другие регионы", note: "Только от 5 смен" },
-];
-
 const Contacts = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", phone: "", task: "" });
@@ -52,8 +44,7 @@ const Contacts = () => {
         <div className="mb-12">
           <div className="section-label text-secondary/70">06 — связаться</div>
           <h2 className="mt-3 text-4xl uppercase leading-[1.05] text-secondary md:text-6xl">
-            Контакты и<br />
-            зона выезда
+            Контакты
           </h2>
         </div>
 
@@ -113,29 +104,6 @@ const Contacts = () => {
               ))}
             </div>
 
-            <div>
-              <h3 className="mb-4 text-lg uppercase text-secondary">
-                Зона выезда
-              </h3>
-              <ul className="divide-y divide-background/20 border-y border-background/20">
-                {ZONES.map((z) => (
-                  <li
-                    key={z.name}
-                    className="flex items-center justify-between py-3 text-sm"
-                  >
-                    <span className="flex items-center gap-2">
-                      <Icon
-                        name="Navigation"
-                        size={14}
-                        className="text-secondary"
-                      />
-                      {z.name}
-                    </span>
-                    <span className="text-background/60">{z.note}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
           {/* форма */}
