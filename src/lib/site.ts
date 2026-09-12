@@ -21,4 +21,6 @@ export const IMG = {
   dump: "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/files/b594fb6e-f166-42a9-b1bb-916f9dd96fce.jpg",
   crane:
     "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/files/956114ee-1228-447d-b24a-1636e60f0440.jpg",
+  demolition:
+    "https://cdn.poehali.dev/projects/cf2e2ab7-6013-423b-9d13-bff88ef7cb01/bucket/dec070b0-94d6-4264-9dc5-48a24c58ae11.webp",
 };
