@@ -15,7 +15,8 @@ export const PHONE_2_HREF = PHONES[1].href;
 
 export const WHATSAPP_HREF = "https://wa.me/79235320742";
 export const TELEGRAM_HREF = "https://t.me/+79235320742";
-export const MAX_HREF = "https://max.ru/u/79235320742";
+export const MAX_HREF =
+  "https://max.ru/u/f9LHodD0cOLB0Owtxx2dlULcjK853K1alCNABAi6uILJ-mR6n_ElqUQzp70";
 
 export const NAV_LINKS = [
   { label: "Услуги", href: "#services" },
